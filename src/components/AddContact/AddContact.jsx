@@ -30,7 +30,7 @@ export const AddContact = () => {
           number: '',
         }}
         onSubmit={(values, actions) => {
-          dispatch(addContact({ ...values, id: nanoid() }));
+          dispatch(addContact({ id: nanoid(), ...values }));
           actions.resetForm();
         }}
         validationSchema={addContactSchema}

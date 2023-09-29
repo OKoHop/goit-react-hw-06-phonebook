@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = {
+    contacts: [],
+};
 
 export const sliceContacts = createSlice({
     name: 'contacts', 
     initialState,
     reducers: {
         addContact: (state, action) => {
-            if (state.find(contact => contact.name.toLowerCase() === action.payload.name.toLowerCase())) {
+            if (state.contacts.find(contact => contact.name.toLowerCase() === action.payload.name.toLowerCase())) {
                 return alert(`${action.payload.name} is already in contact!`);
             }
-            return [...state, action.payload];
+            
+            state.contacts.push(action.payload);
         },
         deleteContact: (state, action) => {
-            return state.filter(contact => contact.id !== action.payload);
+            return state.contacts.filter(contact => contact.id !== action.payload);
         },
     }
 })
