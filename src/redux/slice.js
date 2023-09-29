@@ -12,11 +12,10 @@ export const sliceContacts = createSlice({
             if (state.contacts.find(contact => contact.name.toLowerCase() === action.payload.name.toLowerCase())) {
                 return alert(`${action.payload.name} is already in contact!`);
             }
-            
             state.contacts.push(action.payload);
         },
         deleteContact: (state, action) => {
-            return state.contacts.filter(contact => contact.id !== action.payload);
+            state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
         },
     }
 })
